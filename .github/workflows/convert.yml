@@ -15,7 +15,7 @@ jobs:
 
       - name: Convertir modelo a encabezado .h
         run: |
-          xxd -i converted_model.tflite > model_data.h
+          xxd -i convertida_tflite > model_data.h
           ls -lh model_data.h
 
       - name: Guardar archivo model_data.h
