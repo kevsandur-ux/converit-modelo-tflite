@@ -1,4 +1,4 @@
-name: Convertir modelo TFLite a model_data.h
+name: Convertir modelo tflite a model_data.h
 
 on:
   workflow_dispatch:
