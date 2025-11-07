@@ -1,0 +1,25 @@
+name: Convertir modelo TFLite a model_data.h
+
+on:
+  workflow_dispatch:
+
+jobs:
+  convertir:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar herramienta xxd
+        run: sudo apt-get update && sudo apt-get install -y xxd
+
+      - name: Convertir modelo a encabezado .h
+        run: |
+          xxd -i converted_model.tflite > model_data.h
+          ls -lh model_data.h
+
+      - name: Guardar archivo model_data.h
+        uses: actions/upload-artifact@v4
+        with:
+          name: modelo_convertido
+          path: model_data.h
