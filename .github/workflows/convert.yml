@@ -1,4 +1,4 @@
-name: Convertir modelo tflite a model_data.h
+name: Convertir modelo TFLite a model_data.h
 
 on:
   workflow_dispatch:
@@ -15,8 +15,14 @@ jobs:
 
       - name: Convertir modelo a encabezado .h
         run: |
-          xxd -i convertida_tflite > model_data.h
+          xxd -i convertida_tflite.tflite > model_data.h
           ls -lh model_data.h
+
+      - name: Guardar archivo model_data.h
+        uses: actions/upload-artifact@v4
+        with:
+          name: modelo_convertido
+          path: model_data.h
 
       - name: Guardar archivo model_data.h
         uses: actions/upload-artifact@v4
